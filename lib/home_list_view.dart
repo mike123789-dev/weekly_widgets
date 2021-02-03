@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:weekly_widgets/deatil_view.dart';
 import 'package:weekly_widgets/my_widget.dart';
+import 'package:weekly_widgets/widgets/my_text_field.dart';
 
 class HomeListView extends StatelessWidget {
   final List<MyWidget> myWidgets = [
-    MyWidget(widgetName: "Text", widget: Text("SAMPLE")),
+    MyWidget(widgetName: "TextField", widget: MyTextField()),
     MyWidget(widgetName: "Button", widget: RaisedButton(onPressed: () {}))
   ];
 

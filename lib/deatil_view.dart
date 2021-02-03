@@ -9,7 +9,7 @@ class DetailView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("${myWidget.toString()}"),
+        title: Text("${myWidget.widgetName}"),
         actions: [
           IconButton(icon: Icon(Icons.favorite_border), onPressed: () {})
         ],
