@@ -46,7 +46,7 @@ class _MyTextFieldState extends State<MyTextField> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('AlertDialog Demo'),
+          title: Text('Controller texts'),
           content: Container(
             height: 200,
             child: Column(
