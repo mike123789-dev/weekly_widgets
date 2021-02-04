@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:weekly_widgets/deatil_view.dart';
 import 'package:weekly_widgets/my_widget.dart';
+import 'package:weekly_widgets/widgets/my_padding.dart';
+import 'package:weekly_widgets/widgets/my_slider.dart';
 import 'package:weekly_widgets/widgets/my_text_field.dart';
 
 class HomeListView extends StatelessWidget {
   final List<MyWidget> myWidgets = [
     MyWidget(widgetName: "TextField", widget: MyTextField()),
-    MyWidget(widgetName: "Button", widget: RaisedButton(onPressed: () {}))
+    MyWidget(widgetName: "Padding", widget: MyPadding()),
+    MyWidget(widgetName: "Slider", widget: MySlider())
   ];
 
   void _pushDetailScreen(BuildContext context, int index) {
