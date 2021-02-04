@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weekly_widgets/widgets/reusable_widgets/column_with_slider.dart';
 
 class MyPadding extends StatefulWidget {
   @override
@@ -6,12 +7,23 @@ class MyPadding extends StatefulWidget {
 }
 
 class _MyPaddingState extends State<MyPadding> {
+  double paddingValue = 16.0;
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Text('Hello World!'),
+    return ColumnWithSlider(
+      min: 0,
+      max: 100,
+      currentValue: paddingValue,
+      sliderChangeCallback: (value) {
+        setState(() {
+          paddingValue = value;
+        });
+      },
+      child: Card(
+        child: Padding(
+          padding: EdgeInsets.all(paddingValue),
+          child: Text('Hello World!'),
+        ),
       ),
     );
   }
