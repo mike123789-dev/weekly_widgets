@@ -38,6 +38,7 @@ class _MyTextFieldState extends State<MyTextField> {
   void _resetControllers() {
     _idController.clear();
     _passwordController.clear();
+    _validatePassword();
   }
 
   void _showAlertDialog(BuildContext context) async {
@@ -88,6 +89,7 @@ class _MyTextFieldState extends State<MyTextField> {
       controller: _idController,
       onSubmitted: (String value) {
         print("id: $value");
+        _validatePassword();
       },
       onEditingComplete: () {
         _showAlertDialog(context);
@@ -107,6 +109,7 @@ class _MyTextFieldState extends State<MyTextField> {
       },
       onSubmitted: (String value) {
         print("password: $value");
+        _validatePassword();
       },
       onEditingComplete: () {
         _showAlertDialog(context);
