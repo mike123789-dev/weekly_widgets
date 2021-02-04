@@ -10,8 +10,6 @@ class SliderController {
   SliderController(this.sliderValue);
 }
 
-enum Status { none, running, stopped, paused }
-
 class _MySliderState extends State<MySlider> {
   SliderController _firstSliderController = SliderController(0.0);
   SliderController _secondSliderController = SliderController(0.0);
