@@ -13,6 +13,20 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        textTheme: ThemeData.light().textTheme.copyWith(
+              headline6: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+              subtitle1: TextStyle(
+                fontWeight: FontWeight.w400,
+                color: Colors.grey,
+              ),
+              button: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+        buttonTheme: ThemeData.light().buttonTheme.copyWith(),
       ),
       home: HomeListView(),
     );
