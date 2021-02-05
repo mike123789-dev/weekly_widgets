@@ -46,6 +46,42 @@ class _MyFirstButtonsState extends State<MyFirstButtons> {
             onPressed: () {},
             icon: starIcon,
           ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 30),
+                    child: Column(
+                      children: [
+                        Text(
+                          "Title Text",
+                          style: Theme.of(context).textTheme.headline4,
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          "This is a Card widget to show how to use ButtonBar",
+                        ),
+                      ],
+                    ),
+                  ),
+                  ButtonBar(
+                    children: [
+                      TextButton(
+                        onPressed: () {},
+                        child: Text("TextButton"),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text("ElevatedButton"),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );
