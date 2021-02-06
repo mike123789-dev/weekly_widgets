@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:weekly_widgets/deatil_view.dart';
 import 'package:weekly_widgets/my_widget.dart';
+import 'package:weekly_widgets/widgets/my_checkbox_list_tile.dart';
 import 'package:weekly_widgets/widgets/my_first_buttons.dart';
+import 'package:weekly_widgets/widgets/my_list_tile.dart';
+import 'package:weekly_widgets/widgets/my_list_view.dart';
+import 'package:weekly_widgets/widgets/my_list_view_builder.dart';
+import 'package:weekly_widgets/widgets/my_list_view_with_different_items.dart';
+import 'package:weekly_widgets/widgets/my_lists.dart';
+import 'package:weekly_widgets/widgets/my_list_view_seperated.dart';
 import 'package:weekly_widgets/widgets/my_padding.dart';
 import 'package:weekly_widgets/widgets/my_second_buttons.dart';
 import 'package:weekly_widgets/widgets/my_slider.dart';
@@ -9,11 +16,54 @@ import 'package:weekly_widgets/widgets/my_text_field.dart';
 
 class HomeListView extends StatelessWidget {
   final List<MyWidget> myWidgets = [
-    MyWidget(widgetName: "TextField", widget: MyTextField()),
-    MyWidget(widgetName: "Padding", widget: MyPadding()),
-    MyWidget(widgetName: "Slider", widget: MySlider()),
-    MyWidget(widgetName: "Buttons", widget: MyFirstButtons()),
-    MyWidget(widgetName: "Buttons more", widget: MySecondButtons())
+    MyWidget(
+      widgetName: "TextField",
+      widget: MyTextField(),
+    ),
+    MyWidget(
+      widgetName: "Padding",
+      widget: MyPadding(),
+    ),
+    MyWidget(
+      widgetName: "Slider",
+      widget: MySlider(),
+    ),
+    MyWidget(
+      widgetName: "Buttons",
+      widget: MyFirstButtons(),
+    ),
+    MyWidget(
+      widgetName: "Buttons more",
+      widget: MySecondButtons(),
+    ),
+    MyWidget(
+      widgetName: "Lists",
+      widget: MyLists(),
+    ),
+    MyWidget(
+      widgetName: "ListView",
+      widget: MyListView(),
+    ),
+    MyWidget(
+      widgetName: "ListView.builder",
+      widget: MyListViewBuilder(),
+    ),
+    MyWidget(
+      widgetName: 'ListView.separated',
+      widget: MyListViewSeperated(),
+    ),
+    MyWidget(
+      widgetName: "ListView.Builder with Different Items",
+      widget: MyListViewWithDifferentItems(),
+    ),
+    MyWidget(
+      widgetName: "ListTile",
+      widget: MyListTile(),
+    ),
+    MyWidget(
+      widgetName: "CheckBoxTile",
+      widget: MyCheckBoxTile(),
+    ),
   ];
 
   void _pushDetailScreen(BuildContext context, int index) {
@@ -37,7 +87,10 @@ class HomeListView extends StatelessWidget {
         child: ListView.builder(
           itemBuilder: (BuildContext context, int i) {
             return ListTile(
-              title: Text("${myWidgets[i].widgetName}"),
+              title: Text(
+                "${myWidgets[i].widgetName}",
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
               onTap: () {
                 _pushDetailScreen(context, i);
               },
