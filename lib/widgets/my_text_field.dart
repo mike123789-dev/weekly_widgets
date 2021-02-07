@@ -8,6 +8,8 @@ class MyTextField extends StatefulWidget {
 class _MyTextFieldState extends State<MyTextField> {
   TextEditingController _idController;
   TextEditingController _passwordController;
+  FocusNode _idFocusNode;
+  FocusNode _passwordFocusNode;
 
   bool isPasswordValid = false;
 
@@ -16,12 +18,16 @@ class _MyTextFieldState extends State<MyTextField> {
     super.initState();
     _idController = TextEditingController();
     _passwordController = TextEditingController();
+    _idFocusNode = FocusNode();
+    _passwordFocusNode = FocusNode();
   }
 
   @override
   void dispose() {
     _idController.dispose();
     _passwordController.dispose();
+    _idFocusNode.dispose();
+    _passwordFocusNode.dispose();
     super.dispose();
   }
 
@@ -59,7 +65,7 @@ class _MyTextFieldState extends State<MyTextField> {
             ),
           ),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               child: Text('OK'),
               onPressed: () {
                 Navigator.pop(context, "OK");
@@ -86,6 +92,8 @@ class _MyTextFieldState extends State<MyTextField> {
 
   Widget _buildIdTextField() {
     return TextField(
+      autofocus: true,
+      focusNode: _idFocusNode,
       controller: _idController,
       onSubmitted: (String value) {
         print("id: $value");
@@ -97,12 +105,14 @@ class _MyTextFieldState extends State<MyTextField> {
       decoration: InputDecoration(
         border: borderMaker(Colors.green),
         labelText: "ID",
+        hintText: "A unique ID",
       ),
     );
   }
 
   Widget _buildPasswordTextField() {
     return TextField(
+      focusNode: _passwordFocusNode,
       controller: _passwordController,
       onChanged: (_) {
         _validatePassword();
@@ -139,13 +149,29 @@ class _MyTextFieldState extends State<MyTextField> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             // crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text("press Done on Keyboard!"),
-              RaisedButton(
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text("press Done on Keyboard!"),
+              ),
+              ElevatedButton(
                 child: Text("Reset"),
                 onPressed: _resetControllers,
               ),
             ],
-          )
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          ButtonBar(
+            children: [
+              ElevatedButton(
+                  child: Text("Focus ID"),
+                  onPressed: () => _idFocusNode.requestFocus()),
+              ElevatedButton(
+                  child: Text("Focus Password"),
+                  onPressed: () => _passwordFocusNode.requestFocus()),
+            ],
+          ),
         ],
       ),
     );
