@@ -18,6 +18,37 @@ import 'package:weekly_widgets/widgets/animations/my_shared_axis.dart';
 import 'package:weekly_widgets/widgets/my_slider.dart';
 import 'package:weekly_widgets/widgets/my_text_field.dart';
 
+abstract class HomeListItem {
+  Widget buildTitle(BuildContext context);
+}
+
+class HeaderItem implements HomeListItem {
+  final String title;
+  HeaderItem(this.title);
+
+  @override
+  Widget buildTitle(BuildContext context) {
+    return Text(
+      title,
+      style: Theme.of(context).textTheme.headline4,
+    );
+  }
+}
+
+class WidgetItem implements HomeListItem {
+  final MyWidget myWidget;
+
+  WidgetItem(this.myWidget);
+
+  @override
+  Widget buildTitle(BuildContext context) {
+    return Text(
+      myWidget.widgetName,
+      style: Theme.of(context).textTheme.bodyText1,
+    );
+  }
+}
+
 class HomeListView extends StatefulWidget {
   @override
   _HomeListViewState createState() => _HomeListViewState();
@@ -37,82 +68,75 @@ class _HomeListViewState extends State<HomeListView> {
     super.dispose();
   }
 
-  final List<MyWidget> myWidgets = [
-    MyWidget(
-      widgetName: "TextField",
-      widget: MyTextField(),
+  final List<HomeListItem> myWidgets = [
+    HeaderItem("widgets"),
+    WidgetItem(
+      MyWidget(widgetName: "TextField", widget: MyTextField()),
     ),
-    MyWidget(
-      widgetName: "Padding",
-      widget: MyPadding(),
+    WidgetItem(
+      MyWidget(widgetName: "Padding", widget: MyPadding()),
     ),
-    MyWidget(
-      widgetName: "Slider",
-      widget: MySlider(),
+    WidgetItem(
+      MyWidget(widgetName: "Slider", widget: MySlider()),
     ),
-    MyWidget(
-      widgetName: "Buttons",
-      widget: MyFirstButtons(),
+    WidgetItem(
+      MyWidget(widgetName: "Buttons", widget: MyFirstButtons()),
     ),
-    MyWidget(
-      widgetName: "Buttons more",
-      widget: MySecondButtons(),
+    WidgetItem(
+      MyWidget(widgetName: "Buttons more", widget: MySecondButtons()),
     ),
-    MyWidget(
-      widgetName: "Lists",
-      widget: MyLists(),
+    HeaderItem("Lists"),
+    WidgetItem(
+      MyWidget(widgetName: "Lists", widget: MyLists()),
     ),
-    MyWidget(
-      widgetName: "ListView",
-      widget: MyListView(),
+    WidgetItem(
+      MyWidget(widgetName: "ListView", widget: MyListView()),
     ),
-    MyWidget(
-      widgetName: "ListView.builder",
-      widget: MyListViewBuilder(),
+    WidgetItem(
+      MyWidget(widgetName: "ListView.builder", widget: MyListViewBuilder()),
     ),
-    MyWidget(
-      widgetName: 'ListView.separated',
-      widget: MyListViewSeperated(),
+    WidgetItem(
+      MyWidget(widgetName: 'ListView.separated', widget: MyListViewSeperated()),
     ),
-    MyWidget(
-      widgetName: "ListView.Builder with Different Items",
-      widget: MyListViewWithDifferentItems(),
+    WidgetItem(
+      MyWidget(
+          widgetName: "ListView.Builder with Different Items",
+          widget: MyListViewWithDifferentItems()),
     ),
-    MyWidget(
-      widgetName: "ListTile",
-      widget: MyListTile(),
+    WidgetItem(
+      MyWidget(widgetName: "ListTile", widget: MyListTile()),
     ),
-    MyWidget(
-      widgetName: "CheckBoxTile",
-      widget: MyCheckBoxTile(),
+    WidgetItem(
+      MyWidget(widgetName: "CheckBoxTile", widget: MyCheckBoxTile()),
     ),
-    MyWidget(
-      widgetName: "ContainerTransform",
-      widget: MyContainerTransform(),
+    HeaderItem("Animations"),
+    WidgetItem(
+      MyWidget(
+          widgetName: "ContainerTransform", widget: MyContainerTransform()),
     ),
-    MyWidget(
-      widgetName: "SharedAxis",
-      widget: MySharedAxis(),
+    WidgetItem(
+      MyWidget(widgetName: "SharedAxis", widget: MySharedAxis()),
     ),
-    MyWidget(
-      widgetName: "FadeThrough",
-      widget: MyFadeThrough(),
+    WidgetItem(
+      MyWidget(widgetName: "FadeThrough", widget: MyFadeThrough()),
     ),
-    MyWidget(
-      widgetName: "AnimatedSwitcher",
-      widget: MyAniamtedSwitcher(),
-    )
+    WidgetItem(
+      MyWidget(widgetName: "AnimatedSwitcher", widget: MyAniamtedSwitcher()),
+    ),
+    HeaderItem("Packages"),
   ];
 
-  void _pushDetailScreen(BuildContext context, int index) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => DetailView(
-          myWidget: myWidgets[index],
+  void _pushDetailScreen(BuildContext context, HomeListItem item) {
+    if (item is WidgetItem) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => DetailView(
+            myWidget: item.myWidget,
+          ),
         ),
-      ),
-    );
+      );
+    }
   }
 
   @override
@@ -125,14 +149,14 @@ class _HomeListViewState extends State<HomeListView> {
         child: ListView.builder(
           controller: _scrollController,
           itemBuilder: (BuildContext context, int i) {
+            final item = myWidgets[i];
             return ListTile(
-              title: Text(
-                "${myWidgets[i].widgetName}",
-                style: Theme.of(context).textTheme.bodyText1,
-              ),
-              onTap: () {
-                _pushDetailScreen(context, i);
-              },
+              title: item.buildTitle(context),
+              onTap: (item is WidgetItem)
+                  ? () {
+                      _pushDetailScreen(context, item);
+                    }
+                  : null,
             );
           },
           itemCount: myWidgets.length,
