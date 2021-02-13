@@ -1,22 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:weekly_widgets/deatil_view.dart';
 import 'package:weekly_widgets/my_widget.dart';
-import 'package:weekly_widgets/widgets/animations/my_animated_switcher.dart';
-import 'package:weekly_widgets/widgets/lists/my_checkbox_list_tile.dart';
-import 'package:weekly_widgets/widgets/animations/my_container_transform.dart';
-import 'package:weekly_widgets/widgets/animations/my_fade_through.dart';
 import 'package:weekly_widgets/widgets/my_first_buttons.dart';
-import 'package:weekly_widgets/widgets/lists/my_list_tile.dart';
-import 'package:weekly_widgets/widgets/lists/my_list_view.dart';
-import 'package:weekly_widgets/widgets/lists/my_list_view_builder.dart';
-import 'package:weekly_widgets/widgets/lists/my_list_view_with_different_items.dart';
-import 'package:weekly_widgets/widgets/lists/my_lists.dart';
-import 'package:weekly_widgets/widgets/lists/my_list_view_seperated.dart';
 import 'package:weekly_widgets/widgets/my_padding.dart';
 import 'package:weekly_widgets/widgets/my_second_buttons.dart';
-import 'package:weekly_widgets/widgets/animations/my_shared_axis.dart';
 import 'package:weekly_widgets/widgets/my_slider.dart';
 import 'package:weekly_widgets/widgets/my_text_field.dart';
+import 'widgets/animations/animations.dart';
+import 'widgets/lists/lists.dart';
+import 'widgets/packages/packages.dart';
 
 abstract class HomeListItem {
   Widget buildTitle(BuildContext context);
@@ -69,7 +61,7 @@ class _HomeListViewState extends State<HomeListView> {
   }
 
   final List<HomeListItem> myWidgets = [
-    HeaderItem("widgets"),
+    HeaderItem("Widgets"),
     WidgetItem(
       MyWidget(widgetName: "TextField", widget: MyTextField()),
     ),
@@ -86,9 +78,6 @@ class _HomeListViewState extends State<HomeListView> {
       MyWidget(widgetName: "Buttons more", widget: MySecondButtons()),
     ),
     HeaderItem("Lists"),
-    WidgetItem(
-      MyWidget(widgetName: "Lists", widget: MyLists()),
-    ),
     WidgetItem(
       MyWidget(widgetName: "ListView", widget: MyListView()),
     ),
@@ -124,6 +113,9 @@ class _HomeListViewState extends State<HomeListView> {
       MyWidget(widgetName: "AnimatedSwitcher", widget: MyAniamtedSwitcher()),
     ),
     HeaderItem("Packages"),
+    WidgetItem(
+      MyWidget(widgetName: "Bloc", widget: MyBloc()),
+    ),
   ];
 
   void _pushDetailScreen(BuildContext context, HomeListItem item) {
