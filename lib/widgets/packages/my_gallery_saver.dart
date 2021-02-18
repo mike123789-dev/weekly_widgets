@@ -28,7 +28,19 @@ class _MyGallerySaverState extends State<MyGallerySaver> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Image.network(
-            "https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg"),
+          "https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg",
+          loadingBuilder: (context, child, loadingProgress) {
+            if (loadingProgress == null) return child;
+            return Center(
+              child: CircularProgressIndicator(
+                value: loadingProgress.expectedTotalBytes != null
+                    ? loadingProgress.cumulativeBytesLoaded /
+                        loadingProgress.expectedTotalBytes
+                    : null,
+              ),
+            );
+          },
+        ),
         ElevatedButton(
           onPressed: _saveNetwork,
           child: Text("Save Owl Image To Gallery"),
