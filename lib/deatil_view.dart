@@ -24,7 +24,7 @@ class DetailView extends StatelessWidget {
           IconButton(
               icon: Icon(Icons.favorite_border),
               onPressed: () {
-                _showWebView(context);
+                // _showWebView(context);
               })
         ],
       ),

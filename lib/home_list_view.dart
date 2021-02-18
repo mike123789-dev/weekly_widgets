@@ -6,6 +6,7 @@ import 'package:weekly_widgets/widgets/my_padding.dart';
 import 'package:weekly_widgets/widgets/my_second_buttons.dart';
 import 'package:weekly_widgets/widgets/my_slider.dart';
 import 'package:weekly_widgets/widgets/my_text_field.dart';
+import 'package:weekly_widgets/widgets/packages/my_image_picker.dart';
 import 'widgets/animations/animations.dart';
 import 'widgets/lists/lists.dart';
 import 'widgets/packages/packages.dart';
@@ -115,6 +116,12 @@ class _HomeListViewState extends State<HomeListView> {
     HeaderItem("Packages"),
     WidgetItem(
       MyWidget(widgetName: "Bloc", widget: MyBloc()),
+    ),
+    WidgetItem(
+      MyWidget(widgetName: "ImagePicker", widget: MyImagePicker()),
+    ),
+    WidgetItem(
+      MyWidget(widgetName: "ImageGallerySaver", widget: MyGallerySaver()),
     ),
   ];
 
