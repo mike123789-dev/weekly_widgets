@@ -16,3 +16,8 @@
 - ListView with different types of items
 - ListTile
 - CheckBoxTile
+## Packages
+- BLoC
+- Sqflite
+- image_picker
+- gallery_saver
