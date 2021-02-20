@@ -2,6 +2,7 @@
 - TextField
 - Padding
 - Slider
+- Stack
 ## Buttons
 - ToggleButtons
 - DropdownButton

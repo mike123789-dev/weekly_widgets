@@ -5,6 +5,7 @@ import 'package:weekly_widgets/widgets/my_first_buttons.dart';
 import 'package:weekly_widgets/widgets/my_padding.dart';
 import 'package:weekly_widgets/widgets/my_second_buttons.dart';
 import 'package:weekly_widgets/widgets/my_slider.dart';
+import 'package:weekly_widgets/widgets/my_stack.dart';
 import 'package:weekly_widgets/widgets/my_text_field.dart';
 import 'package:weekly_widgets/widgets/packages/my_image_picker.dart';
 import 'widgets/animations/animations.dart';
@@ -77,6 +78,9 @@ class _HomeListViewState extends State<HomeListView> {
     ),
     WidgetItem(
       MyWidget(widgetName: "Buttons more", widget: MySecondButtons()),
+    ),
+    WidgetItem(
+      MyWidget(widgetName: "Stack", widget: MyStack()),
     ),
     HeaderItem("Lists"),
     WidgetItem(
