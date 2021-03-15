@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:weekly_widgets/deatil_view.dart';
 import 'package:weekly_widgets/my_widget.dart';
 import 'package:weekly_widgets/widgets/my_first_buttons.dart';
+import 'package:weekly_widgets/widgets/my_layout_builder.dart';
+import 'package:weekly_widgets/widgets/my_media_query.dart';
 import 'package:weekly_widgets/widgets/my_padding.dart';
 import 'package:weekly_widgets/widgets/my_second_buttons.dart';
 import 'package:weekly_widgets/widgets/my_slider.dart';
@@ -81,6 +83,12 @@ class _HomeListViewState extends State<HomeListView> {
     ),
     WidgetItem(
       MyWidget(widgetName: "Stack", widget: MyStack()),
+    ),
+    WidgetItem(
+      MyWidget(widgetName: "MediaQuery", widget: MyMediaQuery()),
+    ),
+    WidgetItem(
+      MyWidget(widgetName: "LayoutBuilder", widget: MyLayoutBuilder()),
     ),
     HeaderItem("Lists"),
     WidgetItem(

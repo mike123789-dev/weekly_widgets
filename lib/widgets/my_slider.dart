@@ -15,13 +15,14 @@ class _MySliderState extends State<MySlider> {
   SliderController _secondSliderController = SliderController(0.0);
   SliderController _thirdSliderController = SliderController(0.0);
 
-  Widget buildSlider(
-      {SliderController controller,
-      int divisions,
-      String name,
-      Color color = Colors.green,
-      double enabledThumbRadius = 10.0,
-      double elevation = 1.0}) {
+  Widget buildSlider({
+    SliderController controller,
+    int divisions,
+    String name,
+    Color color = Colors.green,
+    double enabledThumbRadius = 10.0,
+    double elevation = 1.0,
+  }) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -31,6 +32,7 @@ class _MySliderState extends State<MySlider> {
           SliderTheme(
             data: SliderThemeData(
               activeTrackColor: color,
+              inactiveTrackColor: Colors.red,
               thumbColor: color,
               activeTickMarkColor: color,
               valueIndicatorColor: color,
@@ -47,9 +49,11 @@ class _MySliderState extends State<MySlider> {
               divisions: divisions,
               label: '${controller.sliderValue.round()}',
               onChanged: (double newValue) {
-                setState(() {
-                  controller.sliderValue = newValue;
-                });
+                setState(
+                  () {
+                    controller.sliderValue = newValue;
+                  },
+                );
               },
             ),
           ),
