@@ -138,6 +138,9 @@ class _HomeListViewState extends State<HomeListView> {
     WidgetItem(
       MyWidget(widgetName: "Sqflite", widget: MySqflite()),
     ),
+    WidgetItem(
+      MyWidget(widgetName: "Ad", widget: MyAd()),
+    ),
   ];
 
   void _pushDetailScreen(BuildContext context, HomeListItem item) {
