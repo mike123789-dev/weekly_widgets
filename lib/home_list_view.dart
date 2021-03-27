@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:weekly_widgets/deatil_view.dart';
 import 'package:weekly_widgets/my_widget.dart';
+import 'package:weekly_widgets/widgets/my_draggable.dart';
 import 'package:weekly_widgets/widgets/my_first_buttons.dart';
 import 'package:weekly_widgets/widgets/my_layout_builder.dart';
 import 'package:weekly_widgets/widgets/my_media_query.dart';
 import 'package:weekly_widgets/widgets/my_padding.dart';
 import 'package:weekly_widgets/widgets/my_second_buttons.dart';
 import 'package:weekly_widgets/widgets/my_slider.dart';
+import 'package:weekly_widgets/widgets/my_snackbar.dart';
 import 'package:weekly_widgets/widgets/my_stack.dart';
 import 'package:weekly_widgets/widgets/my_text_field.dart';
 import 'package:weekly_widgets/widgets/packages/my_image_picker.dart';
 import 'widgets/animations/animations.dart';
 import 'widgets/lists/lists.dart';
+import 'widgets/my_gesture_detector.dart';
 import 'widgets/packages/packages.dart';
 
 abstract class HomeListItem {
@@ -89,6 +92,15 @@ class _HomeListViewState extends State<HomeListView> {
     ),
     WidgetItem(
       MyWidget(widgetName: "LayoutBuilder", widget: MyLayoutBuilder()),
+    ),
+    WidgetItem(
+      MyWidget(widgetName: "GestureDetector", widget: MyGestureDetector()),
+    ),
+    WidgetItem(
+      MyWidget(widgetName: "Draggable", widget: MyDraggable()),
+    ),
+    WidgetItem(
+      MyWidget(widgetName: "SnackBar", widget: MySnackBar()),
     ),
     HeaderItem("Lists"),
     WidgetItem(
