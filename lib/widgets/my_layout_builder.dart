@@ -3,6 +3,32 @@ import 'package:flutter/material.dart';
 class MyLayoutBuilder extends StatelessWidget {
   const MyLayoutBuilder({Key key}) : super(key: key);
 
+  Widget oneBoxedContainer() {
+    return Container(
+      color: Colors.red,
+      width: 100,
+      height: 100,
+    );
+  }
+
+  Widget twoBoxedContainer() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          color: Colors.red,
+          width: 100,
+          height: 100,
+        ),
+        Container(
+          color: Colors.blue,
+          width: 100,
+          height: 100,
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -17,13 +43,17 @@ class MyLayoutBuilder extends StatelessWidget {
               "width: ${width}\nheight: ${height}\naspect ratio: ${ratio}",
             ),
             SizedBox(
-              height: 30,
+              height: 20,
             ),
             Container(
-              height: 500,
-              width: 500 * ratio,
+              height: 300,
+              width: 300 * ratio,
               color: Colors.blueGrey[100],
-            )
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            ratio >= 1 ? twoBoxedContainer() : oneBoxedContainer()
           ],
         );
       },
