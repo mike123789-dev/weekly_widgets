@@ -31,7 +31,7 @@ class _MyFirstButtonsState extends State<MyFirstButtons> {
           TextButton.icon(
             onPressed: () {},
             icon: starIcon,
-            label: Text("ElevatedButton.icon"),
+            label: Text("TextButton.icon"),
           ),
           OutlinedButton(
             onPressed: () {},
@@ -40,14 +40,37 @@ class _MyFirstButtonsState extends State<MyFirstButtons> {
           OutlinedButton.icon(
             onPressed: () {},
             icon: starIcon,
-            label: Text("ElevatedButton.icon"),
+            label: Text("OutlinedButton.icon"),
           ),
-          IconButton(
-            onPressed: () {},
-            icon: starIcon,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: starIcon,
+                iconSize: 20,
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: starIcon,
+                iconSize: 40,
+              ),
+              Ink(
+                decoration: const ShapeDecoration(
+                  color: Colors.lightBlue,
+                  shape: CircleBorder(),
+                ),
+                child: IconButton(
+                  onPressed: () {},
+                  icon: starIcon,
+                  iconSize: 20,
+                  color: Colors.white,
+                ),
+              ),
+            ],
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(vertical: 30.0),
             child: Card(
               child: Column(
                 children: [
