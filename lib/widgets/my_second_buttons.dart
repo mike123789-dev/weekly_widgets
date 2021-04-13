@@ -15,7 +15,9 @@ extension ParseToString on MenuType {
 }
 
 class _MySecondButtonsState extends State<MySecondButtons> {
-  List<bool> _selections = List.generate(3, (index) => false);
+  List<bool> _selections1 = List.generate(3, (index) => false);
+  List<bool> _selections2 = List.generate(3, (index) => false);
+
   MenuType _dropdownValue;
   MenuType _selection;
 
@@ -41,10 +43,29 @@ class _MySecondButtonsState extends State<MySecondButtons> {
             ],
             onPressed: (int index) {
               setState(() {
-                _selections[index] = !_selections[index];
+                _selections1[index] = !_selections1[index];
               });
             },
-            isSelected: _selections,
+            isSelected: _selections1,
+          ),
+        ),
+        Labeled(
+          title: "ToggleButtons",
+          child: RotatedBox(
+            quarterTurns: 1,
+            child: ToggleButtons(
+              children: <Widget>[
+                RotatedBox(quarterTurns: 3, child: Icon(Icons.circle)),
+                RotatedBox(quarterTurns: 3, child: Icon(Icons.error_outline)),
+                RotatedBox(quarterTurns: 3, child: Icon(Icons.wifi)),
+              ],
+              onPressed: (int index) {
+                setState(() {
+                  _selections2[index] = !_selections2[index];
+                });
+              },
+              isSelected: _selections2,
+            ),
           ),
         ),
         Labeled(
